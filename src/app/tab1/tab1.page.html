@@ -1,41 +1,155 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab One
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<form name="cashForm">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title style="text-align: center;color: seagreen">
+        Breaking Cash
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <!-- <h2 style="text-align: center;color: seagreen"> Breaking Cash</h2> -->
+  <div class="container" [@listAnimation]="allItems.length">
+    <div class="form-group"></div>
 
-<ion-content>
-    <ion-card class="welcome-card">
-      <img src="/assets/shapes.svg" alt="" />
-      <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Welcome to Ionic</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-      </ion-card-content>
-    </ion-card>
-    <ion-list lines="none">
-      <ion-list-header>
-        <ion-label>Resources</ion-label>
-      </ion-list-header>
-      <ion-item href="https://ionicframework.com/docs/">
-        <ion-icon slot="start" color="medium" name="book"></ion-icon>
-        <ion-label>Ionic Documentation</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/building/scaffolding">
-        <ion-icon slot="start" color="medium" name="build"></ion-icon>
-        <ion-label>Scaffold Out Your App</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/layout/structure">
-        <ion-icon slot="start" color="medium" name="grid"></ion-icon>
-        <ion-label>Change Your App Layout</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/theming/basics">
-        <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
-        <ion-label>Theme Your App</ion-label>
-      </ion-item>
-    </ion-list>
-</ion-content>
+    <div class="row panel-body" style="padding-bottom: 5px;">
+      <div class="col-xs-4">
+        <div class="material-form-group">
+          <input type="number" class="" name="amount" [(ngModel)]="amount" (change)="checkIfValid()" />
+
+          <label for="amount" class="form-control-label">
+            Your amount
+            <span class="asteriskcolor">*</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-xs-5">
+        <div class="form-group">
+          <button type="button" class="btn btn-success" style="background-color: seagreen" (click)="breakMyCash()"> {{allItems.length ? 'Break the remaining' : 'Break my
+            cash'}}</button>
+          <!-- <button type="button" class="btn btn-success" style="background-color: seagreen" (click)="breakFromHere()" *ngIf="allItems.length">Break the
+            remaining</button> -->
+        </div>
+      </div>
+      <div class="col-xs-2">
+          <div class="form-group">
+        <button type="button" class="btn btn-success" style="background-color: seagreen" (click)="clearAll()">Clear</button>
+        </div>
+      </div>
+
+      <!-- <div class="col-xs-4">
+            <div class="row">
+                <input type="number" class="" name="addRemoveDenomination" [(ngModel)]="newDenomination"/>
+                <button type="button" for="addRemoveDenomination" class="btn btn-success" (click)="addRemoveDenomination()">Add/Remove Denomination</button>
+              </div>
+              </div> -->
+  
+    </div>
+    <p style="color: red">{{showErrMsgValid}}</p>
+
+    <div class="row panel-body" style="padding-bottom: 5px;">
+      <div class="col-xs-6">
+        <div class="material-form-group">
+          <select class="" name="denominations" [(ngModel)]="item.denomination" [disabled]="!amount">
+            <option value=undefined>
+              <span style="background-color: seagreen">Please select a
+                denomination</span>
+            </option>
+            <option *ngFor="let denomination of denominations" [value]="denomination">
+              {{denomination}}
+            </option>
+          </select>
+          <label for="denominations" class="form-control-label">
+            Select denominations
+            <span class="asteriskcolor">*</span>
+          </label>
+        </div>
+
+      </div>
+
+      <div class="col-xs-4">
+        <div class="material-form-group">
+          <input type="number" class="" name="total" [(ngModel)]="item.total" [disabled]="!amount" />
+
+          <label for="total" class="form-control-label">
+            Total
+            <span class="asteriskcolor">*</span>
+          </label>
+        </div>
+      </div>
+      <div class="col-xs-2">
+
+        <div class="add-asttributes-wrapper">
+          <button type="button" class="glyphicon glyphicon-plus  button-plus-aad additem-icon" (click)="addItem()"
+            [disabled]="!item.denomination || item.denomination == 'undefined' || !item.total"></button>
+        </div>
+      </div>
+    </div>
+
+    <p style="color : red">{{showErrMsg}}</p>
+
+    <div class="row panel-body" style="padding-bottom: 5px;" *ngFor="let item of allItems; let idx=index;">
+      <div class="col-xs-6">
+        <div class="material-form-group">
+          {{item.denomination}}
+
+        </div>
+
+      </div>
+
+      <div class="col-xs-4">
+        <div class="material-form-group">
+
+          {{item.total}}
+        </div>
+      </div>
+      <div class="col-xs-2">
+        <div class="add-asttributes-wrapper">
+          <button type="button" class="glyphicon glyphicon-remove btn-xs btn add-btn"
+            (click)="removeItem(idx)"></button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row panel-body">
+      <div class="col-xs-5" style="position: absolute;bottom: 20px;">
+        <label class="form-control-label">
+          Value
+        </label>
+        <div class="material-form-group">
+          {{value}}
+
+        </div>
+
+      </div>
+      <div class="col-xs-5" style="position: absolute;bottom: 20px;right:2px">
+          <div class="material-form-group">
+            <input type="number" class="" name="addRemoveDenomination" [(ngModel)]="newDenomination"
+              (keypress)="checkDenominationExists()" />
+            <label for="addRemoveDenomination" class="form-control-label">
+              Add/Remove Denomination
+            </label>
+  
+          </div>
+         
+        </div>
+        <div class="col-xs-2" style="position: absolute;bottom: 33px;right:0px">
+        <div class="add-asttributes-wrapper" *ngIf="newDenomination && !denominationExists">
+          <button type="button" class="glyphicon glyphicon-plus  button-plus-aad additem-icon"
+            (click)="addDenomination()"></button>
+        </div>
+        <div class="add-asttributes-wrapper" *ngIf="newDenomination && denominationExists">
+          <button type="button" class="glyphicon glyphicon-remove btn-xs btn remove-btn"
+            (click)="removeDenomination()"></button>
+        </div>
+        </div>
+    </div>
+
+
+    <!-- <div class="forgotpass-submit">
+                <button class="btn btn-success" type="submit" (click)="save()">Save</button>
+                <button class="btn btn-danger11 btn-default">Cancel</button>
+            </div> -->
+
+
+  </div>
+</form>

@@ -24,3 +24,120 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/* You can add global styles to this file, and also import other style files */
+@import url("https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+.panel-body {padding: 12px 0px 15px 0px;}
+
+.panel-body .material-form-group label {
+  color: #545454;font-weight: 600;font-size: 14px;letter-spacing: 0.31px;
+}
+
+.material-form-group.date-format .input-group-btn{top:inherit; bottom:4px;  }
+.material-form-group.date-format .form-control{padding-left:50px;  }
+
+/**************Reports page css *******/
+.material-form-group.searchtextbhox .search-box-search-icon{position:absolute; left:15px; top:52px; color:#333; font-size:19px;      }
+.material-form-group.searchtextbhox input{padding-left:45px;height: 60px; font-style: italic;color: #4a4a4a; font-size: 16px; letter-spacing: 0.14px; }
+.material-form-group.searchtextbhox:focus  + .search-box-search-icon{color:seagreen; }
+.appdropdown .reportMultiSelectDrpDown .multiselect-parent{margin-top:7px; width:100%; margin-left:0px!important;   }
+.appdropdown .reportMultiSelectDrpDown .multiselect-parent button{max-width:inherit!important; border-bottom:2px solid #9b9b9b; border-radius:0; }
+.appdropdown .dropdown-menu-form{max-width:100%!important; min-width:100% ;  }
+.material-form-group input:focus + .search-box-search-icon{color:seagreen;}
+.material-form-group .search-box-common:focus + i{
+  color:seagreen;
+}
+.material-form-group .search-box-common-search-icon{
+  position: absolute;
+  top: 55px;
+  left: 14px;
+  z-index: 9;
+  font-size: 19px;
+  cursor: pointer;
+}
+.material-form-group .search-box-common-search-icon22{
+  position: absolute;
+  top: 22px;
+  left: 14px;
+  z-index: 9;
+  font-size: 19px;
+  cursor: pointer;
+}
+.material-form-group{ display: flex; flex-direction: column-reverse; text-align: left !important;position: relative;}
+.material-form-group input, .material-form-group select, .material-form-group textarea { 
+outline: none !important;
+border-bottom: 2px solid #9b9b9b;
+border-top: 0px;
+border-left: 0px;
+border-right: 0px;
+}
+.material-form-group:focus + i{color: seagreen !important;}
+.material-form-group input:focus, .material-form-group select:focus, .material-form-group textarea:focus{
+border-bottom: 2px solid seagreen;
+}
+.material-form-group input:focus ~ label span{color: seagreen}
+.material-form-group select:focus ~ label span{color: seagreen}
+.material-form-group textarea:focus ~ label span{color: seagreen}
+.material-form-group input:focus ~ label, .material-form-group select:focus ~ label, .material-form-group textarea:focus ~ label{color: seagreen}
+.material-form-group select {
+  background: #fff url(./assets/images/select-drop-arrow-icon.png);
+  background-repeat: no-repeat;
+  background-position: right center;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.material-form-group select:focus {
+background: #fff url(./assets/images/select-drop-arrow-icon-hover.png);
+background-repeat: no-repeat;
+background-position: right center;
+-webkit-appearance: none;
+appearance: none;
+}
+.material-form-group .input-group-btn{
+  position: absolute;
+  z-index: 99;
+  top: 27px;
+  left: 3px;
+}
+.material-form-group .input-group-btn > .btn {
+  position: relative;
+  border: 0px;
+  font-size: 18px;
+}
+.input-group-btn > .btn-default:hover {
+  color: #333;
+  background-color: #fff;
+}
+.material-form-group textarea{
+  -webkit-box-shadow:0px 0px 5px 0px rgba(0, 0, 0, 0.23);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.23);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.23);
+  border-radius: 0;
+  height: 90px;
+  padding: 0px 15px;
+  font-size: 16px;
+  line-height: 25px; 
+margin-top: 7px;
+resize: none;
+}
+.material-form-group label{margin-bottom: 0px;}
+ 
+.btn-danger11 {
+  color: #fff;
+  background-color: #df3341;
+  border-color: #df3341;
+}
+.add-asttributes-wrapper{float:left; width:0px; position:relative; top:14px; }
+.add-asttributes-wrapper .add-btn{position:relative; font-size:14px; margin:-20px -30px 0px 0px;  
+  float:right; width:30px; height:30px; color:#fff; background:seagreen;padding:0px 8px;  
+  border-radius:100%; line-height:30px; text-decoration: none; text-align:center; border:0px;}
+  .add-asttributes-wrapper .remove-btn{position:relative; font-size:14px; margin:-2px -30px 0px 0px;  
+    float:right; width:30px; height:30px; color:#fff; background:seagreen;padding:0px 8px;  
+    border-radius:100%; line-height:30px; text-decoration: none; text-align:center; border:0px;}
+  .additem-icon{position:relative; font-size:14px; margin:0px -30px 0px 0px;  
+    float:right; background:seagreen; width:30px; height:30px; color:#fff; padding:0px 8px;  
+    border-radius:100%; line-height:30px; text-decoration: none; text-align:center; border:0px;          } 
+  .additem-icon:hover{color:#fff; background:seagreen; text-decoration: none   }
