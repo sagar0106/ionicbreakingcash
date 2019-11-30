@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { trigger,style,transition,animate,keyframes,query,stagger } from '@angular/animations';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -31,7 +32,7 @@ import { trigger,style,transition,animate,keyframes,query,stagger } from '@angul
   ]
 })
 export class Tab1Page {
-  item = {};
+  item = {denomination:null,total: null};
   allItems: any[] = [];
   amount;
   value = 0;
@@ -45,7 +46,48 @@ export class Tab1Page {
     showFilterBody : false,
   };
   // #077696
+  constructor(private alertCtrl: AlertController) {
 
+  }
+
+  async presentPrompt() {
+    const alert = await this.alertCtrl.create({
+      header: 'Add/Remove Denominations',
+      cssClass: 'my-custom-popup',
+      inputs: [
+        {
+         name: 'denomination',
+         type: 'number',
+        //  value: this.newDenomination
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Add/Remove',
+          handler: data => {
+            if (data.denomination) {
+            this.newDenomination = +data.denomination;
+            this.checkDenominationExists();
+            if (this.denominationExists) {
+              this.removeDenomination();
+            } else {
+              this.addDenomination();
+            }
+           }
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+  
   addItem() {
     this.showErrMsg = '';
     if (this.checkOverFlow()) {
@@ -57,7 +99,7 @@ export class Tab1Page {
     } else {
       this.allItems.push(this.item);
     }
-    this.item = {};
+    this.item = {denomination:null,total: null};
   }
 
   matchFound(denomination) {
@@ -113,9 +155,11 @@ export class Tab1Page {
   prepareItems(amtToBreak, denomination) {
     let total;
     total = (amtToBreak / denomination);
+    if (Math.floor(total) > 0) {
     this.item['denomination'] = denomination;
     this.item['total'] = Math.floor(total);
     this.addItem();
+    }
   }
 
   checkDenominationExists() {
@@ -143,7 +187,7 @@ export class Tab1Page {
   }
 
   clearAll() {
-    this.item = {};
+    this.item = {denomination:null,total: null};
     this.allItems = [];
     this.value = 0;
     this.amount = '';

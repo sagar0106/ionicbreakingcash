@@ -121,18 +121,19 @@
         </div>
 
       </div>
-      <div class="col-xs-5" style="position: absolute;bottom: 20px;right:2px">
+      <div class="col-xs-5" style="position: absolute;bottom: 20px;right:0px">
           <div class="material-form-group">
-            <input type="number" class="" name="addRemoveDenomination" [(ngModel)]="newDenomination"
-              (keypress)="checkDenominationExists()" />
+            <!-- <input type="number" class="" name="addRemoveDenomination" [(ngModel)]="newDenomination"
+              (keyup)="checkDenominationExists()" />
             <label for="addRemoveDenomination" class="form-control-label">
               Add/Remove Denomination
-            </label>
-  
+            </label> -->
+            <button type="button" class="btn btn-success" style="background-color: seagreen" (click)="presentPrompt()"> Denominations</button>
+      
           </div>
          
         </div>
-        <div class="col-xs-2" style="position: absolute;bottom: 33px;right:0px">
+        <!-- <div class="col-xs-2" style="position: absolute;bottom: 33px;right:0px">
         <div class="add-asttributes-wrapper" *ngIf="newDenomination && !denominationExists">
           <button type="button" class="glyphicon glyphicon-plus  button-plus-aad additem-icon"
             (click)="addDenomination()"></button>
@@ -141,7 +142,7 @@
           <button type="button" class="glyphicon glyphicon-remove btn-xs btn remove-btn"
             (click)="removeDenomination()"></button>
         </div>
-        </div>
+        </div> -->
     </div>
 
 
