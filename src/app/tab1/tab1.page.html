@@ -78,15 +78,15 @@
       <div class="col-xs-2">
 
         <div class="add-asttributes-wrapper">
-          <button type="button" class="glyphicon glyphicon-plus  button-plus-aad additem-icon" (click)="addItem()"
+          <button type="button" class="glyphicon glyphicon-plus button-plus-add additem-icon" (click)="addItem()"
             [disabled]="!item.denomination || item.denomination == 'undefined' || !item.total"></button>
         </div>
       </div>
     </div>
 
     <p style="color : red">{{showErrMsg}}</p>
-
-    <div class="row panel-body" style="padding-bottom: 5px;" *ngFor="let item of allItems; let idx=index;">
+<div class="fixed-scroll">
+    <div class="row panel-body scroll-table" style="padding-bottom: 5px;" *ngFor="let item of allItems; let idx=index;">
       <div class="col-xs-6">
         <div class="material-form-group">
           {{item.denomination}}
@@ -109,7 +109,7 @@
       </div>
 
     </div>
-
+  </div>
     <div class="row panel-body">
       <div class="col-xs-5" style="position: absolute;bottom: 20px;">
         <label class="form-control-label">
@@ -128,7 +128,7 @@
             <label for="addRemoveDenomination" class="form-control-label">
               Add/Remove Denomination
             </label> -->
-            <button type="button" class="btn btn-success" style="background-color: seagreen" (click)="presentPrompt()"> Denominations</button>
+            <button type="button" class="btn btn-success" style="background-color: seagreen;margin-right:20px" (click)="presentPrompt()"> Denominations</button>
       
           </div>
          
