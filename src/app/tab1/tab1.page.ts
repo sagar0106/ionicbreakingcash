@@ -110,7 +110,7 @@ export class Tab1Page {
 
   checkOverFlow() {
      if (this.value + (this.item['denomination'] * this.item['total']) > this.amount) {
-      this.showErrMsg = 'Value is exceeding the amount.';
+      this.showErrMsg = 'Amount breaked is exceeding the Amount to break.';
       return true;
      }
      return false;
@@ -118,7 +118,7 @@ export class Tab1Page {
 
   checkIfValid() {
       if (this.amount < this.value) {
-      this.showErrMsgValid = 'Amount cannot be less than value.';
+      this.showErrMsgValid = 'Amount to break cannot be less than the Amount breaked.';
       return;
      }
      this.showErrMsgValid = '';
@@ -172,6 +172,9 @@ export class Tab1Page {
   }
   addDenomination() {
     this.denominations.push(this.newDenomination);
+    this.denominations.sort((a, b) => {
+      return b - a;
+    });
     this.newDenomination = '';
     this.denominationExists = false;
   }

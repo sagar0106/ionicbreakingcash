@@ -10,7 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AdMobFree } from '@ionic-native/admob-free/ngx'; 
+// import { AdMobFree } from '@ionic-native/admob-free/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +19,7 @@ import { AdMobFree } from '@ionic-native/admob-free/ngx';
   providers: [
     StatusBar,
     SplashScreen,
-    AdMobFree,
+   // AdMobFree,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
